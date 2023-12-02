@@ -1,9 +1,9 @@
 <?php
 
-define('HOST', 'sql311.epizy.com');
-define('USER', 'epiz_29222218');
-define('PASSWORD', 'XFBb2yWY0P06W');
-define('DATABASE_NAME', 'epiz_29222218_hms_3');
+define('HOST', '127.0.0.1');
+define('USER', 'root');
+define('PASSWORD', '');
+define('DATABASE_NAME', 'hmsystem');
 
 $servername = HOST;
 $username = USER;
