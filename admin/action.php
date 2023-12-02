@@ -1,6 +1,6 @@
 <?php
 
-require_once('pdf_libs/pdf.php');
+require_once('pdf_lib/pdf.php');
 include_once('../config/db.php');
 
 

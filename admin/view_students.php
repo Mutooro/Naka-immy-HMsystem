@@ -71,8 +71,9 @@ include('php_classes/security.php');
                     <th>reg no</th>
                     <th>Address</th>
                     <th>student no</th>
-                    <th>emmergence no</th>
                     <th>course</th>
+                    <th>emmergence no</th>
+                  
                     <th>student address</th>
                     <th>father names</th>
                     <th>place</th>
