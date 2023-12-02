@@ -100,11 +100,7 @@ include('php_classes/security.php');
           <div class="form-group">
                     <label for="title">Hostel:</label>
                     <div id="display_hostel"></div>
-              <!--  <select name="hostel_name" class="form-select form-control">
-                      <option value="">Choose</option>
-                      <option value="M">Hostel 1</option>
-                      <option value="M">Hostel 2</option>
-                    </select> -->
+           
           </div>
           <div class="form-group">
                   <label for="title">Seaters:</label>
@@ -213,7 +209,7 @@ include('php_classes/security.php');
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+            <span>Copyright &copy; Nakaziba Immy</span>
           </div>
         </div>
       </footer>

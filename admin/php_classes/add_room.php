@@ -154,10 +154,12 @@ class Room
 			return ['status'=> 303, 'message'=> 'Invalid Image Format [Valid Formats : jpg, jpeg, png]'];
 		}
 			
-		}else{
-			return ['status'=> 303, 'message'=> 'Changes are only made on the image and cooking..since the room has started been booked'];
-			exit();
+		}else {
+			$response = ['status' => 303, 'message' => 'Changes are only made on the image and cooking..since the room has started been booked'];
+			// exit(); // Remove or comment out the exit() statement
+			return $response;
 		}
+		
 		}
 
 		

@@ -145,7 +145,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Average cost (Daily) </div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">Tsh <span id="display_1"></span></div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">Ush <span id="display_1"></span></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -208,7 +208,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Created by Sydney Kibanga &copy; 2021</span>
+            <span>Created by Nakaziba &copy; 2023</span>
           </div>
         </div>
       </footer>

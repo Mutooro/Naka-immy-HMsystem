@@ -15,7 +15,7 @@ class Student
 		$q = $this->con->query("SELECT * FROM student_add_tbl WHERE student_reg_no = '$student_reg_no'");
 		if ($q->num_rows > 0) {
            return ['status'=> 303, 'message'=> 'The Reg number is already in the database.'];
-           exit();
+          
 		}
 
 		$q = $this->con->query("INSERT INTO `student_add_tbl`(`student_reg_no`, `Year`) VALUES ('$student_reg_no','$Year')");

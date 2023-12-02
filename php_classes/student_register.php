@@ -11,29 +11,33 @@ class Students
 	}
 
 
-	public function registerStudent($f_name, $l_name, $gender ,$student_no ,$address ,$student_reg_no ,$course ,$emmercence_no ,$father_names ,$place ,$occupation ,$phone_1 ,$phone_2 ,$email ,$password)
-	{
-        $q = $this->con->query("SELECT student_reg_no FROM student_add_tbl WHERE student_reg_no = '$student_reg_no'");
+	public function registerStudent($f_name, $l_name, $gender, $student_no, $address, $student_reg_no, $course, $emmercence_no, $father_names, $place, $occupation, $phone_1, $phone_2, $email, $password)
+{
+    
+    $q = $this->con->query("SELECT student_reg_no FROM student_add_tbl WHERE student_reg_no = '$student_reg_no'");
+    if ($q->num_rows > 0) {
+        
+        $q = $this->con->query("SELECT student_reg_no FROM student_tbl WHERE student_reg_no = '$student_reg_no'");
         if ($q->num_rows > 0) {
-        	 $q = $this->con->query("SELECT student_reg_no FROM student_tbl WHERE student_reg_no = '$student_reg_no'");
-        	 if ($q->num_rows > 0) {
-        	 	return ['status'=> 303, 'message'=> 'Please login..! You can NOT register twice.'];
-			exit();
-
-        	 }else{
-                $q = $this->con->query("INSERT INTO student_tbl (f_name, l_name, gender, student_no, address, student_reg_no, course, emmercence_no, father_names, place, occupation, phone_1, phone_2, email, password) VALUES ('$f_name', '$l_name', '$gender' ,'$student_no' ,'$address' ,'$student_reg_no' ,'$course' ,'$emmercence_no' ,'$father_names' ,'$place' ,'$occupation' ,'$phone_1' ,'$phone_2' ,'$email' ,'$password')");
-			if ($q) {
-				return ['status'=> 202, 'message'=> 'Registered Successfully.! Please login.'];
-				exit();
-        	 }
-			 
-			}
-		}else{
-		  return ['status'=> 303, 'message'=> 'Registration number is NOT available or INCORRECT.! Please try again.'];
-			exit();
-		}
-
+           
+            return ['status' => 303, 'message' => 'Please login..! You can NOT register twice.'];
+            
+        } else {
+       
+            $q = $this->con->query("INSERT INTO student_tbl (f_name, l_name, gender, student_no, address, student_reg_no, course, emmercence_no, father_names, place, occupation, phone_1, phone_2, email, password) VALUES ('$f_name', '$l_name', '$gender', '$student_no', '$address', '$student_reg_no', '$course', '$emmercence_no', '$father_names', '$place', '$occupation', '$phone_1', '$phone_2', '$email', '$password')");
+            if ($q) {
+               
+                return ['status' => 202, 'message' => 'Registered Successfully.! Please login.'];
+             
+            }
+        }
+    } else {
+ 
+        return ['status' => 303, 'message' => 'Registration number is NOT available or INCORRECT.! Please try again.'];
+        
+    }
 }
+
 }
 
 //php codes for registering a students 
