@@ -88,36 +88,57 @@ $.ajax({
 		$("#edit_room_modal").modal('show');
 });
 
-$("#edit_room_btn").on("click", function(){
+$("#edit_room_btn").on("click", function () {
+    $.ajax({
+        url: './php_classes/add_room.php',
+        method: "POST",
+        data: new FormData($("#edit_room_form")[0]),
+        contentType: false,
+        cache: false,
+        processData: false,
+        beforeSend: function () {
+            $('#edit_room_btn').attr('disabled', 'disabled');
+            $('#edit_room_btn').val('Updating...Please Wait.');
+        },
+        success: function (response) {
+            console.log(response);
 
-		$.ajax({
-			url : './php_classes/add_room.php',
-			method : "POST",
-			data : new FormData($("#edit_room_form")[0]),
-			contentType : false,
-			cache : false,
-			processData : false,
-			beforeSend:function(){
-					$('#edit_room_btn').attr('disabled','disabled');
-					$('#edit_room_btn').val('Updating...Please Wait.');
-				},
-			success : function(response){
-				console.log(response);
-				var resp = $.parseJSON(response);
-				if (resp.status == 202) {
-					getData();
-					$(".message").html('<div class="alert alert-success text-center"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <b>'+resp.message+'</b></div>');
-					$("#edit_room_form").trigger("reset");
-					$('#edit_room_modal').modal('hide');
-				}else if(resp.status == 303){
-					$(".message_2").html('<div class="alert alert-danger text-center"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <b>'+resp.message+'</b></div>');
-				}
-			  $('#edit_room_btn').val('update');
-              $('#edit_room_btn').attr('disabled', false);
-			}
-		});
+            // Check if the response is HTML (error) or JSON
+            if (response.indexOf('<html') !== -1) {
+                // Handle HTML error response
+                console.error("Server returned HTML error:", response);
+                // You might want to display an error message to the user
+            } else {
+                // Parse JSON response
+                var resp = $.parseJSON(response);
+                if (resp.status == 202) {
+                    getData();
+                    $(".message").html('<div class="alert alert-success text-center"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <b>' + resp.message + '</b></div>');
+                    $("#edit_room_form").trigger("reset");
+                    $('#edit_room_modal').modal('hide');
+                } else if (resp.status == 303) {
+                    $(".message_2").html('<div class="alert alert-danger text-center"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <b>' + resp.message + '</b></div>');
+                }
+            }
 
-	});
+            // Reset button state
+            $('#edit_room_btn').val('update');
+            $('#edit_room_btn').attr('disabled', false);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("AJAX Error:", textStatus, errorThrown);
+
+            // Handle AJAX error
+            // You might want to display an error message to the user
+            $(".message_2").html('<div class="alert alert-danger text-center"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <b>AJAX Error: ' + textStatus + '</b></div>');
+
+            // Reset button state
+            $('#edit_room_btn').val('update');
+            $('#edit_room_btn').attr('disabled', false);
+        }
+    });
+});
+
 
    
 

@@ -65,6 +65,10 @@ class Room
 			if ($_FILES['image']['size'] > (1024 * 2)) {
 				
 				$uniqueImageName = time()."_".$_FILES['image']['name'];
+				$uploadDir = '../uploaded-img/';
+if (!file_exists($uploadDir)) {
+    mkdir($uploadDir, 0777, true);
+}
 				if (move_uploaded_file($_FILES['image']['tmp_name'], "../uploaded-img/".$uniqueImageName)) {
 					
 					$q = $this->con->query("INSERT INTO `rooms`(`hostel_name`, `seater`, `fee`, `cooking`, `room_image_1`,`space_availability`) VALUES ('$hostel_name', '$seater', '$fee', '$cooking', '$uniqueImageName', '$space_availability')");

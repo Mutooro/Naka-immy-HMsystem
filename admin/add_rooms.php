@@ -155,11 +155,7 @@ include('php_classes/security.php');
           <div class="form-group">
                     <label for="title">Hostel:</label>
                     <div id="display_hostel_2"></div>
-              <!--  <select name="hostel_name" class="form-select form-control">
-                      <option value="">Choose</option>
-                      <option value="M">Hostel 1</option>
-                      <option value="M">Hostel 2</option>
-                    </select> -->
+           
           </div>
           <div class="form-group">
                   <label for="title">Seaters:</label>

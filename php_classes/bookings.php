@@ -216,7 +216,7 @@ class Booking
 			exit();
 		}
 }
-/** one of the booking logic codes--ni kucheki receipts numbers
+/** one of the booking logic codes receipts numbers
     this fuction checks if the receipt match with the one admin uploaded.
 **/
  //  public function check_if_receipt_number_match(){
