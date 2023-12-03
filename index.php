@@ -133,7 +133,7 @@
       <div class="card-body p-3 ">
         <div class="pt-2">
           <div class="text-center">
-                <h3 class="h3 text-gray-900 mb-4">WELCOME TO HOSTEL BOOKING SYSTEM</h3>
+                <h3 class="h3 text-gray-900 mb-4">WELCOME TO HOSTEL BOOKING APPLICATION</h3>
               </div>
               <h1 class="small mb-20 text-center text-gray-900">Please book for a room in a Hostel that suites you, Make payment via M-PESA using a vodacom number to Purchase the room.</br></br>Have a nice visit..!!</h1>
                 <hr>
