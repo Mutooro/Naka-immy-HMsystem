@@ -103,29 +103,56 @@ $("body").delegate(".booking_btn","click",function(){
 $("#comfirm_booking_btn").on("click", function(e){
 	e.preventDefault();
 
+		
 		$.ajax({
-			url : './php_classes/bookings.php',
-			method : "POST",
-			data : $("#comfirm_booking_form").serialize(),
-			beforeSend:function(){
-					$('#btn_loader').show();
-					$('#comfirm_booking_btn').hide();
-				},
-			success : function(response){
-				console.log(response);
-				var resp = $.parseJSON(response);
-				if (resp.status == 202) {
-					$(".message").html('<div class="alert alert-success text-center"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <b>'+resp.message+'</b></div>');
-					$("#comfirm_booking_form").trigger("reset");
-					$('#comfirm_modal').modal('hide');
-					$('#success_modal').modal('show');
-				}else if(resp.status == 303){
-					$(".message_2").html('<div class="alert alert-danger text-center"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <b>'+resp.message+'</b></div>');
+			url: './php_classes/bookings.php',
+			method: 'POST',
+			data: $("#comfirm_booking_form").serialize(),
+			dataType: 'json',
+			contentType : false,
+			Cache : false,
+			processData : false,  
+			beforeSend: function() {
+				$('#btn_loader').show();
+				$('#comfirm_booking_btn').hide();
+			},
+			success: function(resp) {
+			
+				console.log('Raw Response:', resp);
+		
+				
+				if (resp) {
+					if (resp.status == 202) {
+						$(".message").html('<div class="alert alert-success text-center"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <b>' + resp.message + '</b></div>');
+						$("#comfirm_booking_form").trigger("reset");
+						$('#comfirm_modal').modal('hide');
+						$('#success_modal').modal('show');
+					} else if (resp.status == 303) {
+						$(".message_2").html('<div class="alert alert-danger text-center"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <b>' + resp.message + '</b></div>');
+					} else {
+						
+						console.error('Unexpected response:', resp);
+						
 					}
-			  $('#comfirm_booking_btn').show();
-              $('#btn_loader').hide();
+				} else {
+					console.error('Unexpected null response:', resp);
+					
+				}
+		
+				$('#comfirm_booking_btn').show();
+				$('#btn_loader').hide();
+			},
+			error: function(xhr, textStatus, errorThrown) {
+				// Handle AJAX request errors
+				console.error('AJAX Request failed:', textStatus, errorThrown);
+				console.log('Response Text:', xhr.responseText); // Log the raw response text
+			
+				// ... additional error handling if needed
 			}
+			
 		});
+		
+		
 
 	});
 
@@ -133,33 +160,33 @@ $("#comfirm_booking_btn").on("click", function(e){
 get_student_bookings();
 function get_student_bookings(){
 	$.ajax({
-			url : 'action.php',
-			method : 'POST',
-			data : {get_student_bookings:1},
-			success : function(response){
-				var resp = $.parseJSON(response);
-
-				var brandHTML = '';
-                var payment_status='';
-				$.each(resp, function(index, value){
-					if(value.payment_status=='PAID'){
-						 payment_status='<span class="badge badge-success">PAID</span>';
-					}else{
-					     payment_status='<span class="badge badge-warning">NOT PAID</span>';
-					}
-					brandHTML += '<tr>'+
-									'<td><img  height="100" src="admin/uploaded-img/'+value.room_image_1+'"></td>'+
-									'<td>'+value.new_fee+'</td>'+
-									'<td>'+payment_status+'</td>'+
-									'<td>'+value.payment_number+'</td>'+
-									'<td><a booking_id="'+value.booking_id+'" class="btn btn-sm btn-warning view_booking"><i class="fa fa-eye"></i></a></td>'+
-								'</tr>';
-				});
-
-				$("#display_list").html(brandHTML);
-
-			}
-		})
+		url: 'action.php',
+		method: 'POST',
+		data: { get_student_bookings: 1 },
+		dataType: 'json',  // Specify that the expected response is JSON
+		success: function(resp) {
+			var brandHTML = '';
+			var payment_status = '';
+			
+			$.each(resp, function(index, value) {
+				if (value.payment_status == 'PAID') {
+					payment_status = '<span class="badge badge-success">PAID</span>';
+				} else {
+					payment_status = '<span class="badge badge-warning">NOT PAID</span>';
+				}
+				brandHTML += '<tr>' +
+					'<td><img  height="100" src="admin/uploaded-img/' + value.room_image_1 + '"></td>' +
+					'<td>' + value.new_fee + '</td>' +
+					'<td>' + payment_status + '</td>' +
+					'<td>' + value.payment_number + '</td>' +
+					'<td><a booking_id="' + value.booking_id + '" class="btn btn-sm btn-warning view_booking"><i class="fa fa-eye"></i></a></td>' +
+					'</tr>';
+			});
+	
+			$("#display_list").html(brandHTML);
+		}
+	});
+	
 }
 
 //viewing the  bookings using eye_btn
@@ -211,18 +238,18 @@ $(document.body).on('click', '.delete_booking', function(){
 Hi function tunaitumia kuangalia kama number alizo upload user zina match 
 na alizo upload admin 
 */
-check_if_receipt_number_match();
-function check_if_receipt_number_match(){
-	$.ajax({
-			url : './php_classes/bookings.php',
-			method : 'POST',
-			data : {check_if_receipt_number_match:1},
-			success : function(response){
-               console.log(response);
-			}
-		});
+// check_if_receipt_number_match();
+// function check_if_receipt_number_match(){
+// 	$.ajax({
+// 			url : './php_classes/bookings.php',
+// 			method : 'POST',
+// 			data : {check_if_receipt_number_match:1},
+// 			success : function(response){
+//                console.log(response);
+// 			}
+// 		});
 
-}
+// }
 
 
 

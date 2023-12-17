@@ -75,7 +75,7 @@ if(isset($_POST["GET_Hostel_rooms"])){
 
 //success modal message display (welcome user)
 if(isset($_POST["Get_Name"])){
-	echo '<div class="alert alert-success text-center"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <b>Welcome to Bookings '.$_SESSION['student_name'].'.</b></div>';
+	echo '<div class="alert alert-success text-center"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <b>Welcome to Bookings '.ucwords($_SESSION['student_name']).'.</b></div>';
 }
 
 //for geting hostel contacts

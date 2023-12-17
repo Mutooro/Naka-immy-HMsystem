@@ -182,10 +182,10 @@
                     </select>
                   </div>
                   <div class="col-sm-6">
-                  <label for="title">Course:</label>
+                  <label for="title">Program:</label>
                     <select name="course" class="form-select form-control">
                       <option value="">Choose</option>
-                      <option value="Diploma">Diploma</option>
+                      <!-- <option value="Diploma">Diploma</option> -->
                       <option value="Degree">Degree</option>
                     </select>
                   </div>

@@ -74,8 +74,8 @@ if(mysqli_num_rows($run_query) > 0){
              <img height="200" class="card-img-top" src="admin/uploaded-img/'.$row["room_image_1"].'" alt="Card image cap">
                <div class="card-body">
                  <h5 class="card-title text-success">'.$row["hostel_name"].'</h5>
-               <p class="card-text">Daily Fee: <span class="font-weight-bold">Tsh '.$row["fee"].'/=</span> <br>Cooking: <span class="font-weight-bold">'.$row["cooking"].'</span>  <br>Seater: <span class="font-weight-bold">'.$row["seater"].'</span> <br>Available Space: <span class="font-weight-bold">'.$row["space_availability"].'</span> </p>
-                <a href="#" room_id="'.$row["room_id"].'" fee="'.$row["fee"].'" class="btn btn-info btn-block booking_btn">Booking</a>
+               <p class="card-text">Daily Fee: <span class="font-weight-bold">Ush '.$row["fee"].'/=</span> <br>Cooking: <span class="font-weight-bold">'.$row["cooking"].'</span>  <br>Rooms: <span class="font-weight-bold">'.$row["seater"].'</span> <br>Available Space: <span class="font-weight-bold">'.$row["space_availability"].'</span> </p>
+                <a href="#" room_id="'.$row["room_id"].'" fee="'.$row["fee"].'" class="btn btn-info btn-block booking_btn">Book</a>
               </div>
              </div>      
     <!-- End room card-->
@@ -98,7 +98,7 @@ if(mysqli_num_rows($run_query) > 0){
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Created by Sydney Kibanga &copy; 2021</span>
+            <span>Created by Nakaziba &copy; 2023</span>
           </div>
         </div>
       </footer>

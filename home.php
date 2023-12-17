@@ -130,7 +130,7 @@ include('php_classes/security.php');
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
           <button id="btn_loader" class="btn btn-info disabled" style="display:none;">
             <span class="row">
-              <img class="ml-2" src="img/loader.gif"/>
+              <!-- <img class="ml-2" src="img/loader.gif"/> -->
               <span class="ml-2 mr-2">Please wait...</span> 
            </span>
           </button>
